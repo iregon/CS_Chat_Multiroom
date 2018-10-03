@@ -1,0 +1,15 @@
+>>> Server avviato il 24/09/2018 10:46:32
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:2125
+>>> USER WITH ID 1 SET NAME TO wedfgh
+>>> Message [text=SET>&>NAME:&:wedfgh, user=null]
+>>> Message [text=GET>&>ROOMS, user=null]
+>>> Server fermato il 24/09/2018 10:48:25
+>>> Server avviato il 24/09/2018 10:50:09
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:2139
+>>> USER WITH ID 1 SET NAME TO tdhfgyj
+>>> Message [text=SET>&>NAME:&:tdhfgyj, user=null]
+>>> Message [text=GET>&>ROOMS, user=null]

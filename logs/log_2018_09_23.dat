@@ -1,0 +1,65 @@
+>>> Server avviato il 23/09/2018 13:20:23
+>>> Server fermato il 23/09/2018 13:20:24
+>>> Server avviato il 23/09/2018 14:25:42
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:4113
+>>> Server fermato il 23/09/2018 14:26:54
+>>> Server avviato il 23/09/2018 14:29:58
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:4136
+>>> Server avviato il 23/09/2018 14:33:12
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:4150
+>>> Server fermato il 23/09/2018 14:33:24
+>>> Server avviato il 23/09/2018 14:46:59
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:4171
+>>> User:1 SET NAME : aaaa
+>>> User:1 SET NAME : aaaa
+>>> User:1 SET NAME : aaaa
+>>> Server fermato il 23/09/2018 14:48:10
+>>> Server avviato il 23/09/2018 15:00:34
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:4201
+>>> USER WITH ID 1 SET NAME TO iregon
+>>> Server fermato il 23/09/2018 15:01:20
+>>> Server avviato il 23/09/2018 17:23:50
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:8738
+>>> USER WITH ID 1 SET NAME TO werwe
+>>> Message [text=SET>&>NAME:&:werwe, user=null]
+>>> Server fermato il 23/09/2018 17:26:52
+>>> Server avviato il 23/09/2018 17:27:02
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:9006
+>>> USER WITH ID 1 SET NAME TO tyu
+>>> Message [text=SET>&>NAME:&:tyu, user=null]
+>>> Server fermato il 23/09/2018 17:27:42
+>>> Server avviato il 23/09/2018 17:29:24
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:9200
+>>> USER WITH ID 1 SET NAME TO asdf
+>>> Message [text=SET>&>NAME:&:asdf, user=null]
+>>> Server avviato il 23/09/2018 17:30:07
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:9257
+>>> USER WITH ID 1 SET NAME TO qwerty
+>>> Message [text=SET>&>NAME:&:qwerty, user=null]
+>>> Message [text=GET>&>ROOMS, user=null]
+>>> Server avviato il 23/09/2018 17:31:16
+>>> New client connected
+> ID: 1
+> Ip address: /127.0.0.1:9351
+>>> USER WITH ID 1 SET NAME TO sdfghj
+>>> Message [text=SET>&>NAME:&:sdfghj, user=null]
+>>> Message [text=GET>&>ROOMS, user=null]
+>>> Server fermato il 23/09/2018 17:31:36
