@@ -38,6 +38,7 @@ public class Server extends JFrame{
 		
 		//Crate default room
 		rooms.add(new Room("Spawn"));
+		rooms.add(new Room("Principale"));
 		
 		try {
 			ServerSocket ss = new ServerSocket(9090);

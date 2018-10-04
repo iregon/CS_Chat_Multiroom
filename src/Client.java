@@ -27,6 +27,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.EtchedBorder;
 
 public class Client extends JFrame implements ActionListener, WindowListener{
 	
@@ -58,10 +59,12 @@ public class Client extends JFrame implements ActionListener, WindowListener{
 	private JTabbedPane roomsPanel = new JTabbedPane();
 	
 	private JPanel currentRoomPanel = new JPanel();
+	private JTextArea currentRoomTextArea = new JTextArea(0, 20);
+	private JScrollPane currentRoomScrollPane = new JScrollPane(currentRoomTextArea);
 	
 	private JPanel allRoomsPanel = new JPanel();
 	private JTextArea roomsTextArea = new JTextArea(0, 20);
-	private JScrollPane roomsTextAreaScroller = new JScrollPane(roomsTextArea);
+	private JScrollPane allRoomsScrollPane = new JScrollPane(roomsTextArea);
 	
 	public Client() {
 		super("Client");
@@ -105,8 +108,15 @@ public class Client extends JFrame implements ActionListener, WindowListener{
 		
 		//Lista stanze
 		roomsTextArea.setEditable(false);
-		roomsTextAreaScroller.setPreferredSize(new Dimension(250, 80));
-		allRoomsPanel.add(roomsTextAreaScroller);
+		allRoomsScrollPane.setPreferredSize(new Dimension(250, 80));
+		
+		currentRoomPanel.setLayout(new BorderLayout());
+		currentRoomPanel.setBorder(new EtchedBorder());
+		currentRoomPanel.add(currentRoomScrollPane);
+		
+		allRoomsPanel.setLayout(new BorderLayout());
+		allRoomsPanel.setBorder(new EtchedBorder());
+		allRoomsPanel.add(allRoomsScrollPane);
 		
 		jp.add(bottomPanel, BorderLayout.SOUTH);
 		jp.add(topPanel, BorderLayout.NORTH);
