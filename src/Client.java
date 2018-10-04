@@ -60,8 +60,8 @@ public class Client extends JFrame implements ActionListener, WindowListener{
 	private JPanel currentRoomPanel = new JPanel();
 	
 	private JPanel allRoomsPanel = new JPanel();
-	private JList roomsList;
-	private JScrollPane roomsListScroller = new JScrollPane(roomsList);
+	private JTextArea roomsTextArea = new JTextArea(0, 20);
+	private JScrollPane roomsTextAreaScroller = new JScrollPane(roomsTextArea);
 	
 	public Client() {
 		super("Client");
@@ -104,8 +104,9 @@ public class Client extends JFrame implements ActionListener, WindowListener{
 		roomsPanel.addTab("Tutte le stanze", allRoomsPanel);
 		
 		//Lista stanze
-		allRoomsPanel.add(roomsListScroller);
-		roomsListScroller.setPreferredSize(new Dimension(250, 80));
+		roomsTextArea.setEditable(false);
+		roomsTextAreaScroller.setPreferredSize(new Dimension(250, 80));
+		allRoomsPanel.add(roomsTextAreaScroller);
 		
 		jp.add(bottomPanel, BorderLayout.SOUTH);
 		jp.add(topPanel, BorderLayout.NORTH);
@@ -137,50 +138,48 @@ public class Client extends JFrame implements ActionListener, WindowListener{
 		Object o = e.getSource();
 		
 		if(o == sendNicknameButton) {
-			if(!nicknameField.getText().equals("")) {
-				try {
-					out.writeObject(new Message("SET>&>NAME:&:" + nicknameField.getText()));
+			if(nicknameField.getText().equals("")) {
+				JOptionPane.showMessageDialog(this, "Devi inserire un nome", "ERRORE", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			try {
+				out.writeObject(new Message("SET>&>NAME:&:" + nicknameField.getText()));
+				out.flush();
+				
+				Message msg = (Message)in.readObject();
+				Action action = new Action(msg.getText());
+				
+				if(action.getValue().equals("ok")) {
+					JOptionPane.showMessageDialog(this, "Nickname impostato con successo", "INFO", JOptionPane.INFORMATION_MESSAGE);
+					sendNicknameButton.setEnabled(false);
+					sendButton.setEnabled(true);
+					setTitle("Client - " + nicknameField.getText());
+					
+					//Get rooms list
+					out.writeObject(new Message("GET>&>ROOMS"));
 					out.flush();
 					
-					Message msg = (Message)in.readObject();
-					Action action = new Action(msg.getText());
+					msg = (Message)in.readObject();
+					System.out.println(msg.getText());
+					action = new Action(msg.getText());
 					
-					if(action.getValue().equals("ok")) {
-						JOptionPane.showMessageDialog(this, "Nickname impostato con successo", "INFO", JOptionPane.INFORMATION_MESSAGE);
-						sendNicknameButton.setEnabled(false);
-						sendButton.setEnabled(true);
-						setTitle("Client - " + nicknameField.getText());
-						
-						//Get rooms list
-						out.writeObject(new Message("GET>&>ROOMS"));
-						out.flush();
-						
-						msg = (Message)in.readObject();
-						action = new Action(msg.getText());
-						
-						String rl[] = action.getAction().split(";");
-						for (int i = 0; i < rl.length; i++) {
-							Room r = new Room(rl[i]);
-							rooms.add(r);
-						}
-						
-						//Show rooms in list
-						roomsList = new JList(rooms.toArray());
-						roomsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-						roomsList.setLayoutOrientation(JList.VERTICAL);
-//						for (int i = 0; i < rooms.size(); i++) {
-//							roomsList.
-//						}
+					String rl[] = action.getValue().split(";");
+					for (int i = 0; i < rl.length; i++) {
+						Room r = new Room(rl[i]);
+						rooms.add(r);
 					}
 					
-				} catch (IOException e1) {
-					//TODO: manage sendButton exception
-				} catch (ClassNotFoundException e1) {
-					
+					//Add rooms to list
+					for (int i = 0; i < rooms.size(); i++) {
+						roomsTextArea.setText(roomsTextArea.getText() + rooms.get(i).getName() + "\n");
+					}
 				}
-			}
-			else {
-				JOptionPane.showMessageDialog(this, "Devi inserire un nome", "ERRORE", JOptionPane.ERROR_MESSAGE);
+				
+			} catch (IOException e1) {
+				//TODO: manage sendButton exception
+			} catch (ClassNotFoundException e1) {
+				
 			}
 		}
 		else if(o == sendButton) {
