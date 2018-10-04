@@ -36,6 +36,7 @@ public class Client extends JFrame implements ActionListener, WindowListener{
 	private ObjectInputStream in;
 	
 	private ArrayList<Room> rooms;
+	private int currentRoom = 0;
 	
 	/**
 	 * GUI
@@ -180,9 +181,13 @@ public class Client extends JFrame implements ActionListener, WindowListener{
 						rooms.add(r);
 					}
 					
+					//Add current room marker
+									
+					
 					//Add rooms to list
 					for (int i = 0; i < rooms.size(); i++) {
-						roomsTextArea.setText(roomsTextArea.getText() + rooms.get(i).getName() + "\n");
+						if(i == currentRoom) roomsTextArea.setText(roomsTextArea.getText() + "> " + rooms.get(i).getName() + "\n");
+						else roomsTextArea.setText(roomsTextArea.getText() + "    " + rooms.get(i).getName() + "\n");
 					}
 				}
 				
